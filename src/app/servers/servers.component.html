@@ -1,0 +1,50 @@
+
+<!--<input type="text"-->
+       <!--class="form-control"-->
+       <!--(input)="onUpdateServerName($event)">-->
+
+<label>User Name</label>
+<input type="text"
+       class="form-control"
+       [(ngModel)]="userName">
+
+<button class="btn btn-primary"
+        [disabled]="userName === ''"
+        (click)="onSubmitUser()">Submit User</button>
+<p>{{ userCreationStatus }}</p>
+<br/>
+<hr>
+
+<label>Server Name</label>
+<input type="text"
+       class="form-control"
+       [(ngModel)]="serverName">
+
+<!--<p>{{ serverName }}</p>-->
+<button class="btn btn-primary"
+    [disabled]="!allowNewServer"
+    (click)="onCreateServer()">Add Server</button>
+<!--<p [innerText]="allowNewServer"></p>-->
+<!--<p>{{ serverCreationStatus }}</p>-->
+<p *ngIf="serverCreated">Server was created. Server name is {{ serverName }}</p>
+<app-server *ngFor="let server of servers"></app-server>
+
+<br/>
+<hr>
+<label>Display Details</label>
+<br/>
+<!--<button class="btn btn-primary"-->
+        <!--(click)="revealSecret = !revealSecret">Display Details</button>-->
+<button class="btn btn-primary"
+        (click)="onToggleSecret()">Display Details</button>
+<br/>
+<p *ngIf="revealSecret">This is my secret paragraph</p>
+<br/>
+<div *ngFor="let clickNumber of clickNumbers; let i = index"
+    [ngStyle]="{ backgroundColor: i >=4 ? 'blue' : 'transparent' }"
+    [ngClass]="{'white-text': i >= 4}"
+>{{ clickNumber }}
+
+</div>
+
+
